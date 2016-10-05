@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUILDBOT_DIR=$WORKSPACE/nightly_build
-THEANO_PARAM="theano --with-timer --timer-top-n 10"
+THEANO_PARAM="theano -v --with-timer --timer-top-n 10"
 export THEANO_FLAGS=init_gpu_device=gpu
 export GPUARRAY=none
 source $HOME/.bashrc
