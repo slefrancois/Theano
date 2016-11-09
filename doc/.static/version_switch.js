@@ -77,7 +77,7 @@
     }
     var vswitch = ['<div class="rst-versions-up" data-toggle="rst-versions" role="note" aria-label="versions" align=center>'];
     vswitch.push('<span class="rst-current-version" data-toggle="rst-current-version">');
-    vswitch.push(vlabel);
+    vswitch.push(vlabel, ' ');
     vswitch.push('<span class="fa fa-caret-down"></span>');
     vswitch.push('</span>');
     vswitch.push('</div>');
