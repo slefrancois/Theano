@@ -6,6 +6,7 @@ export THEANO_FLAGS=init_gpu_device=cuda
 
 # CUDA
 export PATH=/usr/local/cuda/bin:$PATH
+export CPATH=/usr/local/cuda/include/:$CPATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
 
@@ -46,7 +47,7 @@ FLAGS=on_shape_error=raise,$FLAGS
 FLAGS=${FLAGS},device=cpu,floatX=float64
 
 echo "Executing tests with compute_test_value=ignore"
-NAME=compute_test_value_ignore
+NAME=python2_compute_test_value_ignore
 FILE=${ROOT_CWD}/theano_${NAME}_tests.xml
 echo "THEANO_FLAGS=${FLAGS},compute_test_value=ignore ${NOSETESTS} ${THEANO_PARAM} ${XUNIT}${FILE} ${SUITE}${NAME}"
 date
@@ -56,7 +57,7 @@ ls ${COMPILEDIR}|wc -l
 echo
 
 echo "Executing tests with linker=vm,floatX=float32"
-NAME=linker_vm_float32
+NAME=python2_linker_vm_float32
 FILE=${ROOT_CWD}/theano_${NAME}_tests.xml
 echo "THEANO_FLAGS=${FLAGS},linker=vm,floatX=float32 ${NOSETESTS} ${THEANO_PARAM} ${XUNIT}${FILE} ${SUITE}${NAME}"
 date
@@ -66,7 +67,7 @@ ls ${COMPILEDIR}|wc -l
 echo
 
 echo "Executing tests with cxx="
-NAME=cxx_none
+NAME=python2_cxx_none
 FILE=${ROOT_CWD}/theano_${NAME}_tests.xml
 echo "THEANO_FLAGS=${FLAGS},cxx= ${NOSETESTS} ${THEANO_PARAM} ${XUNIT}${FILE} ${SUITE}${NAME}"
 date
@@ -80,7 +81,7 @@ echo "Running tests using theano.test()"
 mkdir -p test_default
 rm -rf test_default/*
 cd test_default
-NAME=import
+NAME=python2_import
 FILE=${ROOT_CWD}/theano_${NAME}_tests.xml
 EXTRA_ARGS='["--with-xunit", "--xunit-file='${FILE}$'", "'${SUITE}${NAME}'"]'
 THEANO_FLAGS=base_compiledir=$BASE_COMPILEDIR python -c "import theano; theano.test(extra_argv=${EXTRA_ARGS})"

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Anaconda python
-export PATH=/usr/local/miniconda2/bin:$PATH
-
 BUILDBOT_DIR=$WORKSPACE/nightly_build
 THEANO_PARAM="theano --with-timer --timer-top-n 10"
 
@@ -43,7 +40,7 @@ FLAGS=on_shape_error=raise,$FLAGS
 FLAGS=${FLAGS},device=cpu,floatX=float64
 
 echo "Executing tests with mode=FAST_RUN"
-NAME=fastrun
+NAME=python2_fastrun_nogpp
 FILE=${ROOT_CWD}/theano_${NAME}_tests.xml
 echo "THEANO_FLAGS=cmodule.warn_no_version=True,${FLAGS},mode=FAST_RUN ${NOSETESTS} ${PROFILING} ${THEANO_PARAM} ${XUNIT}${FILE} ${SUITE}${NAME}"
 date
